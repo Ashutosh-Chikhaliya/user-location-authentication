@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: "https://stock.tidyinfoway.com/api",
   headers: {
+    Accept: "application/json",
     "Content-Type": "application/json",
   },
 });

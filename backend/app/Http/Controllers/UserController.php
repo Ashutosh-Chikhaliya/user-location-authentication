@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Validator;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-
-
 class UserController extends Controller
 {
     // register
@@ -51,7 +49,7 @@ class UserController extends Controller
         $token = JWTAuth::fromUser($user);
 
         return response()->json([
-            'message' => 'user registeredn successfully !',
+            'message' => 'user registered successfully !',
             'user' => $user,
             'token' => $token
         ], 201);

@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/test', [UserController::class, 'test']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/getUserData', [UserController::class, 'getUserData']);

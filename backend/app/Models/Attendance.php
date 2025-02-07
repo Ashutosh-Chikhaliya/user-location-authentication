@@ -5,19 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CheckIn extends Model
+class Attendance extends Model
 {
     use HasFactory;
+
+    protected $table = 'attendance'; // Ensure this matches the actual table name in migration
 
     protected $fillable = [
         'user_id',
         'type',
         'latitude',
         'longitude',
-        'check_in_time',
+        'datetime',
     ];
 
-    // Relationship with User
     public function user()
     {
         return $this->belongsTo(User::class);

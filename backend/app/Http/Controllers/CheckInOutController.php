@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\CheckIn;
-use App\Models\CheckOut;
+use App\Models\Attendance;
 use Illuminate\Support\Facades\Auth;
 
 class CheckInOutController extends Controller
 {
-    // Check In APIe
+    // Check In API
     public function checkIn(Request $request)
     {
         $request->validate([
@@ -17,12 +16,12 @@ class CheckInOutController extends Controller
             'longitude' => 'required|numeric',
         ]);
 
-        $checkIn = CheckIn::create([
+        $checkIn = Attendance::create([
             'user_id' => Auth::id(), // Get logged-in user's ID
-            'type' => 'check_in',
+            'type' => 'check-in',
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
-            'check_in_time' => now()->setTimezone('Asia/Kolkata')
+            'datetime' => now()->setTimezone('Asia/Kolkata')
         ]);
 
         return response()->json([
@@ -39,12 +38,12 @@ class CheckInOutController extends Controller
             'longitude' => 'required|numeric',
         ]);
 
-        $checkOut = CheckOut::create([
+        $checkOut = Attendance::create([
             'user_id' => Auth::id(), // Get logged-in user's ID
-            'type' => 'check_out',
+            'type' => 'check-out',
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
-            'check_in_time' => now()->setTimezone('Asia/Kolkata')
+            'datetime' => now()->setTimezone('Asia/Kolkata')
         ]);
 
         return response()->json([

@@ -8,23 +8,21 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('verified')->default(false);
-            $table->string('verification_token')->nullable();
+            $table->decimal('office_latitude', 10, 7)->nullable()->after('password');
+            $table->decimal('office_longitude', 10, 7)->nullable()->after('office_latitude');
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('verified');
-            $table->dropColumn('verification_token');
+            $table->dropColumn(['office_latitude', 'office_longitude']);
         });
     }
-
 };
